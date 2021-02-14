@@ -76,7 +76,7 @@ export default {
       }
 
       &:active {
-        background-color: #EEEEEE;
+        background-color: rgba(0, 121, 107, 0.2);
         transition: background-color 100ms;
       }
     }
