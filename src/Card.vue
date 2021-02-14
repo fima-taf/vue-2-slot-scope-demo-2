@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="blog-card" v-for="(item, index) in items" :key="index">
+    <div class="blog-card">
       <div class="header">
         <div>{{ item.title }}</div>
         <div class="subtitle">
@@ -9,6 +9,11 @@
       </div>
       <div class="body">
         {{ item.content }}
+      </div>
+      <div class="tags">
+        <div class="tag" v-for="tag in item.tags" :key="tag">
+          <slot name="tags" :tag="tag"></slot>
+        </div>
       </div>
       <div class="footer">
         <button>{{ item.footer }}</button>
@@ -21,8 +26,7 @@
 <script>
 export default {
   props: {
-    items: Array,
-    subtitleSlotReturnValue: String,
+    item: Object,
   },
 };
 </script>
@@ -55,6 +59,16 @@ export default {
   .body {
     padding: 4%;
     font-size: 0.8em;
+  }
+
+  .tags {
+    padding: 0 4%;
+    display: flex;
+    justify-content: start;
+
+    .tag {
+      padding: 0 2%;
+    }
   }
 
   .footer {

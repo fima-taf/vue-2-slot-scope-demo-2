@@ -1,15 +1,17 @@
 <template>
-  <Card :items="cards" subtitleSlotReturnValue="subtitle">
-    <template slot="subtitle" slot-scope="props">
-      <div :style="'color: ' + props.item.color">
-        {{ props.item.subtitle }}
-        <button @click="props.item.color = 'black'">Change color</button>
-      </div>
-    </template>
-    <template slot="footer-extra" slot-scope="{ item }">
-      {{ item.readtime }}
-    </template>
-  </Card>
+  <div>
+    <Card :item="card" v-for="(card, i) in cards" :key="i">
+      <template slot="subtitle" slot-scope="props">
+        <div :style="'color: ' + props.item.color">
+          {{ props.item.subtitle }}
+        </div>
+      </template>
+      <template slot="tags" slot-scope="{ tag }"> {{ tag }} </template>
+      <template slot="footer-extra" slot-scope="{ item }">
+        {{ item.readtime }}
+      </template>
+    </Card>
+  </div>
 </template>
 
 <script>
@@ -32,6 +34,7 @@ export default {
         readtime: "1 min read",
         footer: "Read More",
         extra: "Recommended",
+        tags: ["#read", "#cool", "#makes_me_wanna_cry"],
       },
       {
         title: "My Second Blog",

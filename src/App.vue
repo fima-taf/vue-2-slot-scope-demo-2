@@ -13,7 +13,7 @@
       </div>
     </nav>
     <h1>{{ title }}</h1>
-    <blog-cards :items="cards" />
+    <blog-cards />
   </div>
 </template>
 
@@ -63,10 +63,6 @@ export default {
 
   h1 {
     font-size: 3em;
-  }
-
-  .rec {
-    font-size: 0.5em;
   }
 }
 </style>
